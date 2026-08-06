@@ -9,26 +9,34 @@
 class GameScreen
 {
 public:
+    // Constructor initializing graphics layout based on window dimensions
     GameScreen(sf::Vector2u windowSize, sf::Font& titleFont, sf::Font& bodyFont);
 
+    // Main draw call for rendering UI components
     void draw(sf::RenderWindow& window);
+
+    // Processes mouse interactions for active tools
     void handleMouseClick(sf::Vector2i mousePos);
 
-    // Dynamic State Switchers
+    // UI state updater methods
     void setDrawerRole(bool isDrawer, const std::string& drawerName = "Player");
     void setRoundInfo(int currentRound, int totalRounds);
     void setWordHint(const std::string& hint);
     void setTimerValue(int seconds);
 
-    // Accessors for teammates
+    // Accessors for canvas and tool controls
     ToolDock& getToolDock() { return m_toolDock; }
     sf::FloatRect getCanvasBounds() const { return m_canvas.getGlobalBounds(); }
 
 private:
-    sf::Vector2u m_windowSize;
-    bool m_isDrawer; // Flag controlling Drawer UI vs Guesser Banner
+    // Helper function calculating dynamic vertical placement for bottom toolbar
+    static float calcToolDockY(sf::Vector2u windowSize);
 
-    // Top Bar UI
+    // Window dimensions state
+    sf::Vector2u m_windowSize;
+    bool m_isDrawer;
+
+    // Top header UI elements
     RoundedRectangleShape m_roundBox;
     RoundedRectangleShape m_wordBox;
     RoundedRectangleShape m_timerBox;
@@ -37,15 +45,15 @@ private:
     sf::Text m_timerText;
     Button m_exitBtn;
 
-    // Layout Containers
+    // Main layout panels
     Leaderboard m_leaderboard;
     RoundedRectangleShape m_canvas;
     RoundedRectangleShape m_chatPanel;
     RoundedRectangleShape m_chatInputBox;
 
-    // Guesser Status Text ("... is drawing")
+    // Non-drawer status text
     sf::Text m_guesserStatusText;
 
-    // Bottom Tool Sub-Component
+    // Bottom tool dock palette
     ToolDock m_toolDock;
 };
