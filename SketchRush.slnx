@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SketchRush/SketchRush.vcxproj" Id="50154f15-5a7b-4cd1-ac1c-69982f6ef2bb" />
+</Solution>

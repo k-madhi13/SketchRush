@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+x64/
+Debug/
+Release/
+*.ilk
+*.pdb
+*.obj
+*.log
+*.tlog
+*.sdf
+*.opendb
+*.VC.db
+
+# User-specific files
+*.vcxproj.user
